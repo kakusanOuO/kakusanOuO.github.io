@@ -1,0 +1,21 @@
+/* .btn{
+    white-space: nowrap;
+} */ /*4.2up*/
+
+a.card:hover {
+  text-decoration: none;
+}
+
+.new-list li::before{
+    content: "．";
+    color: white;
+}
+
+@media screen and (max-width: 560px) {
+    .carousel-item h1{
+        font-size: 2rem;
+    }
+    .carousel-item btn{
+        margin-top: 0 !important;
+    }
+}
