@@ -68,7 +68,7 @@
             var list = document.getElementById("Results");
             var newChild = document.createElement("li");
             newChild.className = 'list-group-item'
-            newChild.innerHTML = '<span class="badge badge-info">' + dd + '</span>出生的你，星座是 <em>' + name + '</em><br>你的生命靈數：<br>' + value + '. ' + lookup;
+            newChild.innerHTML = '<span class="badge badge-info">' + dd + '</span>出生的你，星座是 <em>' + name + '</em><br>你的生命靈數：<br><span class="badge badge-pill badge-dark">' + value + '</span>. ' + lookup;
             if (list.childNodes.length > 0) {
                 list.insertBefore(newChild, list.childNodes[0]);
             }
