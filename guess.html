@@ -102,11 +102,12 @@
             function guess() {
                 var input = document.getElementById("input");
                 if (input.value == random) {
-                    document.getElementById("range").innerHTML = random;
                     alert("答案是 " + random + " 恭喜過關");
-                    input.value = "";
                     if (confirm("要再開一局嗎?")) {
                         restart();
+                    } else {
+                        document.getElementById("range").innerHTML = random;
+                        input.value = "";
                     }
                 }
                 else if (input.value == max || input.value == min) {
