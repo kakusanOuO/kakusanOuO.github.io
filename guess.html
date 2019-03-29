@@ -28,6 +28,7 @@
         </h2>
 
         <div class="container mt-1 input-group">
+            <button type="button" class="btn mr-3" onclick="restart()">開新局</button>
             <input id="input" class="form-control text-right" type="text" value="">
         </div>
 
@@ -94,11 +95,15 @@
             document.getElementById("range").innerHTML = min + "~" + max;
             console.log(random);
 
+            function restart() {
+                window.location.reload();
+            }
+
             function guess() {
                 var input = document.getElementById("input");
                 if (input.value == random) {
                     document.getElementById("range").innerHTML = random;
-                    alert("恭喜過關")
+                    alert("答案是 " + random + " 恭喜過關")
                     input.value = "";
                 }
                 else if (input.value == max || input.value == min) {
@@ -114,15 +119,11 @@
                         max = input.value;
                         document.getElementById("range").innerHTML = min + "~" + max;
                         input.value = "";
-                        console.log(max);
-                        console.log(min);
                     }
                     else if (input.value < random) {
                         min = input.value;
                         document.getElementById("range").innerHTML = min + "~" + max;
                         input.value = "";
-                        console.log(max);
-                        console.log(min);
                     }
                 }
                 else {
