@@ -103,15 +103,18 @@
                 var input = document.getElementById("input");
                 if (input.value == random) {
                     document.getElementById("range").innerHTML = random;
-                    alert("答案是 " + random + " 恭喜過關")
+                    alert("答案是 " + random + " 恭喜過關");
                     input.value = "";
+                    if (confirm("要再開一局嗎?")) {
+                        restart();
+                    }
                 }
                 else if (input.value == max || input.value == min) {
-                    alert("請重新輸入")
+                    alert("請重新輸入，不能是 " + min + " 或 " + max)
                     input.value = "";
                 }
                 else if (input.value > max || input.value < min) {
-                    alert("超出範圍");
+                    alert(input.value + " 超出範圍 " + document.getElementById("range").innerHTML);
                     input.value = "";
                 }
                 else if (input.value > min && input.value < max) {
