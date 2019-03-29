@@ -109,15 +109,21 @@
                     alert("超出範圍");
                     input.value = "";
                 }
-                else if (input.value > random) {
-                    max = input.value;
-                    document.getElementById("range").innerHTML = min + "~" + max;
-                    input.value = "";
-                }
-                else if (input.value < random) {
-                    min = input.value;
-                    document.getElementById("range").innerHTML = min + "~" + max;
-                    input.value = "";
+                else if (input.value > min && input.value < max) {
+                    if (input.value > random) {
+                        max = input.value;
+                        document.getElementById("range").innerHTML = min + "~" + max;
+                        input.value = "";
+                        console.log(max);
+                        console.log(min);
+                    }
+                    else if (input.value < random) {
+                        min = input.value;
+                        document.getElementById("range").innerHTML = min + "~" + max;
+                        input.value = "";
+                        console.log(max);
+                        console.log(min);
+                    }
                 }
                 else {
                     alert("輸入的不是數字哦");
