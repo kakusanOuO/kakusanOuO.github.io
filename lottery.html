@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>抽獎時間</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        .html {
+            background-color: rgb(20, 20, 20);
+        }
+
+        #result {
+            width: 300px;
+        }
+
+        #display {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            margin: 10px auto;
+            background-color: rgb(160, 158, 158);
+        }
+
+        .num {
+            display: block;
+            width: 300px;
+            height: 400px;
+            line-height: 400px;
+            position: absolute;
+            text-align: center;
+            font-size: 120px;
+            background-color: gray;
+            text-shadow: 3px 3px 3px black;
+        }
+
+        .block-f {
+            position: absolute;
+            width: 300px;
+            height: 400px;
+            background-color: #fff;
+            right: 300px;
+            z-index: 10;
+            /*深度要往前*/
+        }
+
+        .block-l {
+            position: absolute;
+            width: 300px;
+            height: 400px;
+            background-color: #fff;
+            left: 300px;
+            z-index: 10;
+            /*深度要往前*/
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <h3 class="container text-center mt-3">選擇困難症殺手</h3> -->
+    <div class="container text-center mt-3" style="width:450px;">
+        <div class="row">
+            <div class="input-group col">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">最小號碼</span>
+                </div>
+                <input type="number" id="min" class="form-control">
+            </div>
+            <div class="input-group col">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">最大號碼</span>
+                </div>
+                <input type="number" id="max" class="form-control">
+            </div>
+        </div>
+        <!-- <span>最小號碼：</span><input type="number" id="min" style="width:70px;">
+        <span>最大號碼：</span><input type="number" id="max" style="width:70px;"> -->
+    </div>
+    <div class="container text-center mt-3" id="result">已經抽過：</div>
+    <!-- <div class="container text-center border border-dark mt-3" style="width:300px;height:400px;"></div> -->
+    <div>
+        <div id="display">
+            <div class="block-f"></div>
+            <h1 class="num"></h1>
+            <h1 class="num"></h1>
+            <h1 class="num"></h1>
+            <div class="block-l"></div>
+        </div>
+        <button class="container btn btn-outline-dark btn-block mt-3 start" style="width:300px;">開始抽</button>
+        <button class="container btn btn-outline-dark btn-block mt-3 restart" style="width:300px;">重新開始</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $(".restart").on("click", replay);
+            function replay() {
+                location.reload();
+            }
+            // document.getElementById("start").onclick = lottery;
+            // $("#start").on("click", lottery);
+            $(".start").on("click", lottery);
+
+            var alreadyList = [];
+            var getList = [];
+            var testNum = 0;
+            function lottery() {
+
+                $($(".num")[0]).css("left", "300px");
+                $($(".num")[1]).css("left", "300px");
+                $($(".num")[2]).css("left", "300px");
+                // 重置卡牌一開始的位置在離左側300px的位置開始動作
+
+                var min = $("#min").val() - 0;
+                var max = $("#max").val() - 0;
+                // 本來會是any -0後會讓他判斷為數值 下面是原本取值得寫法
+                // var max = parseInt(document.getElementById("max").value);
+
+                if (alreadyList.length == max - min + 1) {
+                    return; //表示能抽的數字都抽完且放進list中，不能再抽。
+                }
+                if (min >= max || min <= 0) {
+                    alert("最大最小值可能有誤，請重新填入數值"); //表示最大最小數字有誤，不給抽。
+                    return;
+                }
+                if (max > min && min != 0 && min != max) {
+                    $("min").attr("readonly", "readonly");
+                    $("max").attr("readonly", "readonly");
+                    //讓min max的input鎖起來(只能用讀取不能輸入或纂改)
+                    $(".start").unbind(); //將原本的onclick事件刪除
+                }
+                // getList = []; // 最後補上這個，讓list清空重新抓取數字進去(暫時隱藏)
+                while (alreadyList.length + getList.length < max - min + 1) {
+                    // 一開始還沒放進去所以會看起來怪怪的 只要長度小於max-min+1就放進去
+                    // 因為之後 一個list加 一個list減 兩個list數量相加會是 max-min+1
+                    // 所以等於 max-min+1 的時候就不會再跑這段
+
+                    // var r = Math.floor(Math.random() * (max - min) + 1.4);
+                    var r = Math.floor(Math.random() * 999999) % (max + 1);
+                    //只會在min~max之間抓數字，包含min max的值
+
+                    // indexOf出來的是(0,1,2,3,4,5) 查詢r這個數字在陣列的第幾個位置
+                    if (r >= min && alreadyList.indexOf(r) == -1 && getList.indexOf(r) == -1) {
+                        // console.log("r" + r);
+                        // console.log(alreadyList.indexOf(r)+"...."+alreadyList);
+                        // console.log(getList.indexOf(r)+"...."+getList);
+                        getList[getList.length] = r;
+                    }
+                    // 將min~max的數值放進getList[]中
+                }
+
+                /* // 0410:決定第一個list固定不重新抓數字進去，用foreach的方式抓數字
+                r = Math.floor(Math.random() * (max - min) + 1.4) % getList.length;
+                // 只能出現getlist數量的數值 所以除以list的長度(數量)
+                while (alreadyList.indexOf(r) != -1) {
+                    r = Math.floor(Math.random() * (max - min) + 1.4) % getList.length;
+                }
+                var indexR = getList.indexOf(r);
+                alreadyList[alreadyList.length] = [r];
+                */
+
+                r = getList[testNum];
+                testNum++;
+                if (alreadyList.length == getList.length - 1) {
+                    alert("現在抽的是最後一個數字哦!\r\n之後就不能再抽，需要重新開始")
+                }
+                
+                var indexR = getList.indexOf(r);
+                alreadyList[alreadyList.length] = [r];
+                // console.log("1.getList     " + getList.join(","));
+                // console.log("1.alreadyList " + alreadyList.join(","));
+                delete getList[indexR];
+                test();
+                // console.log("2.getList     " + getList.join(","));
+                // console.log("2.alreadyList " + alreadyList.join(","));
+                // console.log("==========");
+                // console.log("r" + r);
+            }
+            var n = 0;
+            var time = 0;
+            function test() {
+                var a = setInterval(function () {
+                    if (time >= 1500)/*轉幾次 = 每3秒一次 轉15秒 3次*/ {
+                        clearInterval(a);
+                        $($('.num')[n % 3]).text(alreadyList[alreadyList.length - 1]);
+                        $($('.num')[n % 3]).finish();
+                        $($('.num')[n % 3]).css("left", "300px");
+                        $($('.num')[n % 3]).animate({ left: "0px" }, 300, "linear");
+                        n = 0;
+                        time = 0;
+                        $("#result").text("已經抽過: " + alreadyList.join(","));
+                        $(".start").on("click", lottery);
+                    }
+                    else {
+                        $($('.num')[n % 3]).text(getList[n % getList.length]);
+                        $($('.num')[n % 3]).finish();
+                        $($('.num')[n % 3]).css("left", "300px");
+                        $($('.num')[n % 3]).animate({ left: "-300px" }, 600, "linear");
+                        n++;
+                        time = time + 300;
+                    }
+                }, 300);
+            };
+        });
+    </script>
+</body>
+
+</html>
