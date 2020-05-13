@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/images/LOGO_small.ico" />
+    <title>THE BEAR BA Minecraft Server</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- fontawesome CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <!--載入字型-->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Bungee+Shade&family=Dancing+Script&family=Fredericka+the+Great&family=Kranky&family=Libre+Barcode+39&family=Nanum+Pen+Script&family=Noto+Sans+TC&display=swap"
+        rel="stylesheet">
+    <!--styles.css-->
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <link rel="stylesheet" href="stylesheets/login.css" />
+</head>
+
+<body>
+    <!--主選單-->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar_style bg_color">
+            <a class="navbar-brand" href="/"><img src="/images/LOGO.png"><span class="LogoTitle">The Bear Ba</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="justify-content: flex-end;">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="#">首頁</a>
+                    <a class="nav-item nav-link" href="#">近期消息</a>
+                    <a class="nav-item nav-link" href="#">世界介紹</a>
+                    <a class="nav-item nav-link" href="#">任務介紹</a>
+                    <a class="nav-item nav-link" href="#">其他連結</a>
+                    <a class="nav-item nav-link" href="#">會員專區</a>
+                    <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">玩家專區</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!--替換內文-->
+    <div class="container mt-5 mb-5">
+        <div class="login_block">
+            <p class="login_logo_text">The Bear Ba Server</p>
+            <p class="tbb">登入熊霸天，即可開始享用會員福利！</p>
+            <p class="bar_style">登入</p>
+            <form class="input_block">
+                <input type="text" class="form-control com_input" id="Account" placeholder="帳號">
+                <input type="password" class="form-control com_input" id="Password" placeholder="密碼">
+                <small id="forget_password"><a href="#">忘記密碼</a></small>
+                <div class="code_block">
+                    <a href="#" id="changeImg">
+                        <canvas class="show-captcha" id="canvas" width="150" height="40"></canvas>
+                    </a>
+                    <input type="text" class="col-6 form-control com_input" id="code">
+                </div>
+                <input type="submit" class="btn login_btn" value="登入">
+            </form>
+            <p class="bar_style">註冊</p>
+            <a href="#" id="registered_btn" data-toggle="modal" data-target="#user-modal">還沒有帳號? 點我註冊</a>
+        </div>
+    </div>
+
+    <!--註冊彈窗-->
+    <div class="modal fade" id="user-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content registered_Block">
+                <div class="modal-header regBlockHeader">
+                    <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="pill" href="#Registered">註冊</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="pill" href="#Terms_of_Service">服務條款</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="pill" href="#Privacy_statement">隱私權聲明</a>
+                        </li>
+                    </ul>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body tab-content regBlockBody">
+                    <!--註冊頁面-->
+                    <form id="Registered" class="tab-pane fade show active">
+                        <div>
+                            <label for="regAccount">帳號</label>
+                            <input type="text" class="form-control com_input" id="regAccount" placeholder="請輸入 帳號">
+                            <small id="AccountlHelp" class="form-text text-muted">請使用 Minecraft ID 作為帳號</small>
+                        </div>
+                        <div>
+                            <label for="regPassword">密碼</label>
+                            <input type="password" class="form-control com_input" id="regPassword" placeholder="請輸入密碼">
+                            <small id="PasswordHelp" class="form-text text-muted">6 ~ 30個英數字元，有分大小寫</small>
+                        </div>
+                        <div>
+                            <label for="regPassword2">確認密碼</label>
+                            <input type="password" class="form-control com_input" id="regPassword2"
+                                placeholder="請再次輸入密碼">
+                        </div>
+                        <div>
+                            <label for="regEmail">信箱</label>
+                            <input type="email" class="form-control com_input" id="regEmail" placeholder="請輸入信箱">
+                        </div>
+                        <div class="form-group form-check">
+                            <div class="squaredFour">
+                                <input type="checkbox" class="form-check-input" id="declaration">
+                                <label for="declaration"></label>
+                            </div>
+                            <label class="form-check-label" for="declaration">我已閱讀並同意熊霸天官方網站的<a id="TOS_Link"
+                                    href="javascript:void(0);">服務條款</a>與<a id="PS_Link"
+                                    href="javascript:void(0);">隱私權聲明</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-lg btn-block reg_btn">註冊</button>
+                    </form>
+
+                    <!--服務條款-->
+                    <div id="Terms_of_Service" class="tab-pane fade">
+                        <div id="foreword">歡迎您加入成為 The Bear Ba Server (以下簡稱TBB) 所提供之會員服務。當您開始使用 TBB 所提供之會員服務時，則表示您的法定代理人(如父母、輔助人或監護人)已經閱讀、了解並同意本服務條款。</div>
+                        <div id="clause">
+                            <h3 class="clause-title">一、會員服務</h3>
+                            <ul class="clause-text">
+                                <li>TBB 提供 TBB 網站之各項會員服務，僅依當時所提供之功能及狀態提供服務； TBB 保留新增、修改或取消會員服務內相關系統或功能之權利。</li>
+                                <li>會員服務之始期，係自使用者填妥申請資料並完成註冊程序後， TBB
+                                    於完成相關系統設定、使會員服務達於可供使用之日開始。如您有購買或使用付費服務，您必須及時提供購買流程中所要求之資料、為適切地為您提供相關服務所必須的資料，您並應擔保您所提供的所有資料，都是正確且即時的資料，如果您所留存的資料事後有變更，您應立即更新您所留存的資料。
+                                </li>
+                                <li>因會員服務所提供之所有相關網域名稱、網路位址、功能以及其他一切因會員身分得使用之權益，均仍屬 TBB
+                                    或其他合法權利人所有，會員僅得於服務期間內依本服務條款之約定為使用，不得以任何方式將其會員權益轉讓、移轉、出租或出借予其他任何第三人。</li>
+                                <li>會員同意 TBB 得不定期提供或寄送電子報、活動訊息及其他生活資訊至您登錄的電子郵件位址或會員提供資料中之地址。</li>
+                            </ul>
+                            <h3 class="clause-title">二、資料空間與儲存</h3>
+                            <ul class="clause-text">
+                                <li>除付費會員另外再行付費申請加值服務外， TBB 保留新增或修改儲存空間大小之權利。</li>
+                                <li>TBB 會定期備份您所儲存的資料，惟 TBB 不對刪除的資料或備份儲存失敗的資料負責。</li>
+                                <li>本系統不擔保您所上載的資料將被正常顯示、亦不擔保資料傳輸的正確性；如果您發現本系統有錯誤或疏失，請立即通知 TBB 。</li>
+                            </ul>
+                            <h3 class="clause-title">三、帳號、密碼與安全性</h3>
+                            <ul class="clause-text">
+                                <li>在您使用會員服務以前，必須經過 TBB 所訂的註冊手續，在註冊過程中您必須填入完整、而且正確的資料。如因資料錯誤或未更新所造成的任何問題，您須自行負擔責任。
+                                </li>
+                                <li>對於您所取得的使用者名稱和密碼，您必須負妥善保管和保密的義務，並應為使用此使用者名稱和密碼登入後於本網站之一切行為負責。建議於使用完畢後確實登出，並請勿轉讓、出借予第三者使用，如果您的這個使用者名稱和密碼被其他人冒用或不當使用，
+                                    TBB 會儘速協助您解決，但不對您負有任何形式之賠償或補償之責任或義務。</li>
+                            </ul>
+                            <h3 class="clause-title">四、資料的隱私</h3>
+                            <ul class="clause-text">
+                                <li>TBB 會依照隱私權政策保護所有會員的隱私，不管是申請帳號、個人資料或所儲存的網站資料，除了可能涉及違法、侵權、或違反服務條款、或經本人同意以外， TBB
+                                    不會任意監視、增刪、修改或關閉，或將個人資料內容交予第三者，包括贊助之廣告廠商。</li>
+                                <li>會員服務中若有部分服務是 TBB
+                                    與其他合作廠商或夥伴所共同經營者，如果您不願將自身個人資料揭露給其他合作廠商，您可以選擇不使用這些特定服務，但如您開始使用這些特定服務，即表示您同意將個人資料提供給該特定服務之合作廠商；
+                                    TBB 將在資料蒐集或傳輸前明確告知您，再將您的個人資料揭露給該特定服務之合作廠商。</li>
+                                <li>您同意在下列的情況下， TBB 可查看或提供您的個人資料給法院、主管機關、或提出適當證明主張其權利受侵害之第三人：<br>(1)
+                                    因法令或依司法行政機關之命令<br>(2) 為執行本會員服務條款之需要<br>(3) 為維護會員服務系統的正常運作與安全<br>(4)
+                                    為保護其他使用者或其他第三人的合法權益</li>
+                            </ul>
+                            <h3 class="clause-title">五、兒童及青少年之保護</h3>
+                            因網路上之資訊眾多，難免有不適合於兒童與青少年之資訊存在，如暴力、色情或犯罪等資訊，為保護兒童及青少年受到不當資訊的影響，除 TBB
+                            網站會設立檢舉管道移除不適當的資訊外，父母或監護人亦須盡到下列義務：<br>
+                            1. 對於十二歲以上未滿十八歲之青少年，應避免其接觸其他使用者所上傳含有暴力、色情或鼓勵犯罪等資訊之內容。<br>
+                            2. 未滿十二歲之兒童，應全程陪同其上網，以避免兒童接觸到不當資訊。<br>
+                            <h3 class="clause-title">六、關於 TBB 網站會員服務的廣告</h3>
+                            <ul class="clause-text">
+                                <li>TBB 網站提供所有頁面之相關所有權及廣告版面經營權，包括但不限於網頁最上方以及其他 TBB
+                                    認為適當之位置或方式所出現之橫幅式廣告、跳躍式廣告或其他形式廣告與訊息等，均仍歸 TBB 所有，除另行取得 TBB
+                                    事前同意外，會員或第三人均不得以任何方式自行或以第三人名義銷售、經營、或對第三人提供此等網路廣告或類似業務。然會員自身的個人部落格頁面空間不在此限。</li>
+                                <li>所有於 TBB 網站出現之廣告資訊，均由個別廣告主或贊助廠商自行負完全之責任，與 TBB 無關。</li>
+                            </ul>
+                            <h3 class="clause-title">七、使用者的行為</h3>
+                            <ul class="clause-text">
+                                <li>您必須遵守相關法令規範，且您同意不從事以下的行為：<br>(1)
+                                    刊載、傳輸、發送或儲存任何誹謗、詐欺、傷害、猥褻、色情、賭博、謾罵、不實或其他一切違反中華民國法令之檔案或資料。<br>(2)
+                                    刊載、傳輸、發送或儲存任何侵害他人智慧財產權或其他權益的資料。<br>(3) 未經同意擅自摘錄或使用會員服務內任何資料庫內容之全部或一部。<br>(4)
+                                    刊載、傳輸、發送、儲存病毒、或其他任何足以破壞或干擾電腦系統或資料的程式或訊息。<br>(5) 破壞或干擾會員服務的系統運作或違反一般網路禮節之行為。<br>(6)
+                                    在未經授權下進入會員服務系統或冒用他人帳號或偽造他人辨識資料。<br>(7) 任何竊取會員服務之會員帳號、密碼或存取權限之行為。<br>(8)
+                                    任何妨礙或干擾其他使用者使用會員服務之行為。<br>(9) 其他不符合會員服務所提供的使用目的之行為。<br>(10) 破壞及干擾本服務所提供之各項
+                                    資料、活動或功能，或以任何方式侵入、試圖侵入、破壞本服務之任何系統，或藉由本服務為任何侵害或破壞行為。<br>(11) 從事不法交易行
+                                    為或刊載引人犯罪之訊息或買賣行為。</li>
+                                <li>會員服務內之各類文字、圖檔、圖片及其他著作或資料，其著作權或其他相關智慧財產權均仍屬於合法權利人所有，由合法權利人依照當時所定之授權條件及範圍授權會員使用，但僅限於您個人於
+                                    TBB
+                                    網站上使用，未經事前授權您不可以將這些文字、圖檔、圖片或其他著作或資料為重製、公開口述、公開播送、公開上映、公開演出、公開傳輸、改作、散布、發行、公開發表、銷售、轉讓、出租、出借、轉授權、隨書附贈或其他任何形式的使用，亦不得上載於其他任何網站、或以其他方式提供予其他人使用。
+                                </li>
+                                <li>TBB 並未針對會員所傳送、張貼或發表之內容做任何形式或實質之審查，如果任何文字、圖檔、圖片或其他著作或資料發生權利歸屬或其他合法性爭議， TBB
+                                    有權隨時不經通知，直接停止提供會員服務、或直接刪除該文字、圖檔、圖片或其他著作或資料、或通知會員停止使用會員服務。<br>如您認為 TBB
+                                    網站中之任何網頁內容或其他會員使用 TBB 網站服務已侵害您的著作權，請您至<a href="http://help.pixnet.tw/index/ask"
+                                        target="_blank"> PIXNET 網站客服中心</a>與客服人員聯繫，客服人員將會儘速為您處理。</li>
+                                <li>若有發現任何色情、侮辱、誹謗等不合規定的圖片， TBB 將立即刪除，並砍除帳號，不另通知。但您仍可進行上訴的權利。</li>
+                            </ul>
+                            <h3 class="clause-title">八、責任限制</h3>
+                            <ul class="clause-text">
+                                <li>對於 TBB
+                                    所提供之各項會員服務，均僅依該服務當時之功能及現況提供使用；對於使用者之特定要求或需求，包括但不限於速度、安全性、可靠性、完整性、正確性及不會斷線和出錯等，
+                                    TBB 不負任何形式或內容之擔保或保證責任。</li>
+                                <li>對於您所上傳的圖片或文字等資料，您應自行判斷是否適宜公開傳送至網站上， TBB
+                                    會盡最大努力保證您資料的安全性，但無法保證任檔案或資料於傳送過程均係可靠且正確無誤，亦不保證所儲存的檔案或資料之安全性、可靠性、完整性、正確性及不會斷線和出錯等。
+                                </li>
+                                <li>對於您於本服務中所下載之電子郵件、檔案及其他資料，您應該自行考量其風險，如因下載而造成您電腦系統的損壞或電腦中資料的遺失， TBB 不負任何擔保責任。</li>
+                                <li>在本服務中，由您及其他會員上載、公開傳輸、公開發表或私下傳送的資訊、資料、文字、軟體、音樂、音訊、照片、圖形、視訊、信息或其他資料（以下簡稱「使用者內容」），均由「使用者內容」的提供者自負責任。本服務無法控制經由本服務而張貼之「使用者內容」，因此不保證其正確性、完整性或品質。您了解使用本服務時，可能會接觸到令人不快或厭惡的「使用者內容」。在任何情況下，
+                                    TBB 均不為任何「使用者內容」負責，包含但不限於任何錯誤或遺漏，以及經由本服務張貼、發送電子郵件或傳送而衍生之任何損失或損害。</li>
+
+                            </ul>
+                            <h3 class="clause-title">九、服務暫停或中斷</h3>
+                            <ul class="clause-text">
+                                <li>會員服務系統或功能『例行性』之維護、改置或變動所發生之服務暫停或中斷， TBB 將於該暫停或中斷前以電子郵件、公告或其他適當之方式告知會員，您同意 TBB
+                                    不須因此負損害賠償責任。</li>
+                                <li>在下列情形， TBB 將暫停或中斷本服務之全部或一部，且對使用者任何直接或間接之損害，均不負任何責任：<br>(1)
+                                    對本服務相關軟硬體設備進行搬遷、更換、升級、保養或維修時<br>(2) 使用者有任何違反政府法令或本服務條款情形<br>(3) 天災或其他不
+                                    可抗力所致之服務停止或中斷<br>(4) 任何不可歸責於 TBB 之事由所致之服務停止或中斷。</li>
+                                <li>如因可歸責於 TBB 之事由，致服務停止者， TBB 會因情節補償付費會員之相關賠償。</li>
+                            </ul>
+                            <h3 class="clause-title">十、終止服務</h3>
+                            <ul class="clause-text">
+                                <li>基於公司的運作，會員服務有可能停止提供服務之全部或一部，使用者不可以因此而要求任何賠償或補償。</li>
+                                <li>如果您違反了本服務條款， TBB 保留隨時暫時停止提供服務、或終止提供服務之權利，您不可以因此而要求任何賠償或補償。</li>
+                                <li>您同意如果您在會員服務上所刊載、傳輸、發送或儲存的檔案或資料，有任何違反法令、違反本服務條款、或有侵害第三人權益之情事者， TBB
+                                    得隨時得不經通知直接加以移動、刪除或停止服務提供之權利，且不負損害賠償責任。若 TBB 因此受到任何損害，您應對 TBB 負損害賠償之責。</li>
+                                <li>會員服務系統會自動偵測沒有使用的會員帳號，如連續超過一年均未使用，系統將自動將您於該帳號內之所有檔案、資料及使用設定資料檔全數刪除且不予另行備份，並將您的會員帳號暫停使用。上述有無使用之紀錄，均以
+                                    TBB 網站之會員服務系統內所留存之紀錄為準。</li>
+                            </ul>
+                            <h3 class="clause-title">十一、修改本服務條款的權利</h3>
+                            <ul class="clause-text">
+                                <li>TBB 保留隨時修改本會員服務條款的權利，修改後的 TBB 網站會員服務條款將公佈在 TBB 網站之會員服務網站上，您同意將自行主動閱讀 TBB
+                                    不另外個別通知使用者。</li>
+                                <li>本同意書所訂之任何服務條款之全部或部份無效時，不影響其他有效條款之效力。</li>
+                            </ul>
+                            <h3 class="clause-title">十二、準據法及管轄權</h3>
+                            <ul class="clause-text">
+                                <li>本服務條款解釋、補充及適用均以中華民國法令為準據法。</li>
+                                <li>因本服務條款所發生之訴訟，以台灣台北地方法院為第一審管轄法院。</li>
+                            </ul>
+                            <h3 class="clause-title">2020年 05月 31日</h3>
+                        </div>
+                    </div>
+
+                    <!--隱私權聲明-->
+                    <div id="Privacy_statement" class="tab-pane fade">
+                        <div class="TOS policy-text">
+                            <ul class="rule-box">
+                                <h4>1. &nbsp; PIXNET 網站隱私權保護政策適用範圍</h4>
+                                <li>1.1 以下的隱私權保護政策，適用於您在 PIXNET 網站活動時，所涉及的資料蒐集、運用與保護，包括 PIXNET
+                                    如何處理在用戶使用網站服務時收集到的身份識別資料，也包括 PIXNET 如何處理在商業伙伴與 PIXNET 合作時如何分享身份識別資料。</li>
+                                <li>1.2 此隱私權保護政策不適用於 PIXNET 以外的公司，也不適用於非 PIXNET 所僱用或管理的人員。</li>
+                            </ul>
+                            <ul class="rule-box">
+                                <h4>2. 資料收集方式</h4>
+                                <li>2.1 &nbsp; PIXNET 在您註冊 PIXNET
+                                    網站帳號時，會請您提供姓名、電子郵件地址、出生日期、性別、職位(選填的資料)、職業(選填的資料)等資料。當您登入使用 PIXNET 網站的產品或服務、瀏覽 PIXNET
+                                    網站所屬網頁、參加宣傳活動或贈獎遊戲時， PIXNET 會收集您的個人識別資料。</li>
+                                <li>2.2 &nbsp; PIXNET 會保留您在上網瀏覽或查詢時，伺服器自行產生的相關記錄，包括您使用連線設備的 IP
+                                    位址、使用時間、Cookies、使用的瀏覽器、瀏覽及點選資料紀錄等。</li>
+                                <li>2.3 請您注意，在 PIXNET 網站刊登廣告之廠商，或與 PIXNET 網站連結的網站，也可能蒐集您個人的資料。對於您主動提供或因您主動點擊廣告而被 PIXNET
+                                    以外之他人收集的個人資訊，這些廣告廠商、或連結網站有其個別的隱私權保護政策，其資料處理措施不適用 PIXNET 隱私權保護政策， PIXNET 不負任何連帶責任。
+                                </li>
+                                <li>2.4 除了您主動登錄 PIXNET 網站而提供的的個人資料之外，您也可能在 PIXNET
+                                    網站的各項服務內(如部落格留言)主動提供個人資料如電子郵件，姓名等。這種形式的資料提供，不在 PIXNET 網站隱私權保護政策的範圍之內。</li>
+                            </ul>
+                            <ul class="rule-box">
+                                <h4>3. 資料使用方式</h4>
+                                <li>3.1 &nbsp; PIXNET 會使用資料作以下用途：改進為您提供的廣告及網頁內容、完成您對某項產品的要求及通知您特別活動或新產品、您與 PIXNET
+                                    提供之各項服務互動之數據分析會使用於網站內容、產品與服務及廣告投放/應用等用途。</li>
+                                <li>3.2 &nbsp; PIXNET 所收集的資料僅止於商業及市場分析或學術用途；除非受訪者同意，所有資料僅供資料分析之用， PIXNET 不會將資訊用做其他用途。
+                                </li>
+                                <li>3.3 &nbsp; PIXNET 會對個別連線者的瀏覽器予以標示，歸納使用者瀏覽器在 PIXNET 網站內部所瀏覽的網頁，除非您願意告知您的個人資料，否則
+                                    PIXNET 不會，也無法將此項記錄和您對應。</li>
+                                <li>3.4 未經您主動註冊所產生的資料，例如使用者機器的 IP 位址、使用時間、使用的瀏覽器、瀏覽及點選紀錄等資料，PIXNET 會進行全體與個別使用者的行為分析，
+                                    以提升使用者在 PIXNET 網站的服務使用體驗 。</li>
+                                <li>3.5 為提供訂購、行銷、客戶管理或其他合於營業登記項目或章程所定業務需要之目的， PIXNET
+                                    於本公司之營運期間及地區內，將以電郵、傳真、電話、簡訊或其他通知公告方式利用您所提供之資料(資料類別：C001、C002、C003、C011等)
+                                    。利用對象除本集團外，亦可能包括相關服務的協力機構。如您有依個資法第三條或其他需要協助之處，得聯繫 <a
+                                        href="http://help.pixnet.tw/index/ask" target="_blank"> PIXNET
+                                        網站客服中心</a>請求協助。相關資料如為非必填項目，不提供亦不影響您的權益。</li>
+                            </ul>
+                            <ul class="rule-box">
+                                <h4>4. 資料分享以及公開方式</h4>
+                                <li>4.1 除本隱私權保護政策、 PIXNET 網站會員服務條款有記載之事由外， PIXNET
+                                    絕不會任意出售、交換、或出租任何您的個人資料(如姓名、身分證字號)給其他團體或個人。</li>
+                                <li>4.2 在以下的情況下， PIXNET 會向政府機關、其他人士或公司提供您的個人識別資料：</li>
+                                <li class="next">4.2.1 為了提供您其他服務或優惠權益（例如折價券），需要與提供該服務或優惠之第三者共用您的資料時， PIXNET
+                                    會在活動時提供充分說明給您，並且在資料提供之前通知您，您可以自由選擇是否接受這項特定服務或優惠。</li>
+                                <li class="next">4.2.2 需要與其他人士或公司共用您的資料，才能夠提供您要求的產品或服務。</li>
+                                <li class="next">4.2.3 向與 PIXNET
+                                    有契約關係因而提供服務或產品的公司提供資料，以便向您提供產品或服務，前述資料亦可能使用於與前述公司分享、協同分析、使用作為廣告投放/應用 及 改善使用者體驗作業等用途
+                                    (若我們沒有事先通知您，這些公司均無權使用我們提供的個人資料，作提供產品或服務以外的其他用途)。</li>
+                                <li class="next">4.2.4 政府機關依法要求 PIXNET 提供特定個人資料時， PIXNET 將視司法單位合法正式的程序，以及對 PIXNET
+                                    所有使用者安全考量下做可能必要的配合。</li>
+                                <li class="next">4.2.5 我們發覺您在網站上的行為違反<a href="/regulation" target="_blank"> PIXNET
+                                        網站會員服務條款</a>或產品、服務的特定使用指南，或者可能損害 PIXNET 、 PIXNET 網站使用者或相關第三人之權益時，若 PIXNET
+                                    有理由相信揭露此資料係為辨識、連絡或對該人採取法律行動所必要者， PIXNET
+                                    得揭露使用者之個人資料。此外，基於善意相信揭露為法律需要，或為維護和改進產品、服務而用於管理或其他目的時， PIXNET 亦得於 PIXNET
+                                    網站揭露或讀取使用者之個人資料。</li>
+                                <li>4.3
+                                    為了保護使用者個人隱私及遵守個人資料保護法之規定，我們無法為您查詢其他使用者的帳號資料。若您有相關法律上問題需查閱他人資料時，請向有權處理之政府單位提出告訴，我們將依法配合政府單位調查並提供政府單位依法要求之相關資料，以協助調查。
+                                </li>
+                            </ul>
+                            <ul class="rule-box">
+                                <h4>5. Cookies 之使用</h4>
+                                <li>5.1 依據以下目的及情況， PIXNET 會在您電腦中寫入並提取 Cookies：</li>
+                                <li class="next">5.1.1 為提供您個人化服務，以及方便您參與個人化的互動活動。 cookies 在您註冊或登入時建立，並在您登出時修改。</li>
+                                <li class="next">5.1.2 為統計瀏覽人數及分析瀏覽模式，以了解網頁瀏覽的情況，做為 PIXNET 網站改善服務的參考。</li>
+                                <li>5.2 &nbsp; PIXNET 容許經 PIXNET 允許而在 PIXNET 網站上擺放廣告的廠商到您的電腦設定並取用
+                                    cookie，惟其將根據其自訂的隱私權保護政策，而並非本政策使用其 cookie。其他非經 PIXNET 允許之廣告商或公司不能提取 PIXNET 網站的 cookie
+                                    。</li>
+                                <li>5.3 當 PIXNET 進行與產品及服務有關的工作時，會使用 web beacons 進入我們的網站伺服器，提取 cookie 使用。</li>
+                            </ul>
+                            <ul class="rule-box">
+                                <h4>6. 修改個人帳號資料</h4>
+                                <li>您可在任何時候自行修改或與<a href="https://help.pixnet.tw" target="_blank"> PIXNET
+                                        網站客服中心</a>申請修改您個人在 PIXNET 網站註冊之帳號資料及偏好設定</li>
+                                <li>(包括是否接受 PIXNET 網站通知您特別活動或新產品)。</li>
+                            </ul>
+                            <ul class="rule-box">
+                                <h4>7.安全性</h4>
+                                <li>7.1 為保障您的隱私及安全，您的 PIXNET 網站帳號資料會用密碼保護。請妥善保管您的密碼及或任何個人資料，不要將任何個人資料，尤其是密碼提供給任何人。
+                                    PIXNET 絕不會在未經同意的狀況下詢問您的密碼。在您使用完 PIXNET
+                                    網站服務後，務必記得登出帳戶。若您是與他人共用電腦或使用公共電腦，請您使用後要關閉瀏覽器視窗並清除瀏覽資訊，以防止他人讀取您的個人資料或信件。</li>
+                                <li>7.2 在部分情況下 PIXNET 使用通行標準的 SSL 保全系統，保障資料傳送的安全。</li>
+                            </ul>
+                            <ul class="rule-box">
+                                <h4>8.隱私權保護政策修訂</h4>
+                                <li>&nbsp; PIXNET 得隨時修訂本政策。當我們修改本政策時，我們會在網頁上張貼告示，請您務必點閱閱讀。</li>
+                            </ul>
+                            <ul class="rule-box last">
+                                <h4>9.看法與建議</h4>
+                                <li>如有任何看法與建議，請到<a href="https://help.pixnet.tw" target="_blank"> PIXNET
+                                        網站客服中心</a>告訴我們您的意見。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--頁尾資訊-->
+    <footer class="page_footer mt-5">
+        <ul class="more_contact_icon">
+            <li class="list_item"><a target="_bank" href="https://discord.gg/pr4De48"
+                    class="footer_contact_icon_animate"><i class="fab fa-discord"></i></a></li>
+            <li class="list_item"><a target="_bank" href="https://www.facebook.com/BearBaWorld"
+                    class="footer_contact_icon_animate"><i class="fab fa-facebook-square"></i></a></li>
+            <li class="list_item"><a target="_bank" href="#" class="footer_contact_icon_animate"><i
+                        class="fab fa-line"></i></a>
+            </li>
+        </ul>
+        <p class="business-hours">固定維護時間：每個月1號 08:30 ~ 20:30 此時段內皆有可能</p>
+
+        <div class="copyright">
+            Copyright &copy; 2020 熊霸天伺服器 THE BEAR BA Minecraft Server.<br>
+            All Rights Reserved. Design by kakusanOuO
+        </div>
+    </footer>
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+    <script>
+        var ans = "";
+        $(function ($) {
+            /**生成一個隨機數**/
+            function randomNum(min, max) {
+                return Math.floor(Math.random() * (max - min) + min);
+            }
+            /**生成一個隨機色**/
+            function randomColor(min, max) {
+                var r = randomNum(min, max);
+                var g = randomNum(min, max);
+                var b = randomNum(min, max);
+                return "rgb(" + r + "," + g + "," + b + ")";
+            }
+            var code = drawPic();
+            document.getElementById("changeImg").onclick = function (e) {
+                e.preventDefault();
+                code = drawPic();
+            }
+            /**繪制驗證碼圖片**/
+            function drawPic() {
+                var canvas = document.getElementById("canvas");
+                var width = canvas.width;
+                var height = canvas.height;
+                //獲取該canvas的2D繪圖環境 
+                var ctx = canvas.getContext('2d');
+                ctx.textBaseline = 'bottom';
+                /**繪制背景色**/
+                ctx.fillStyle = randomColor(240, 300);
+                //顏色若太深可能導致看不清
+                ctx.fillRect(0, 0, width, height);
+                /**繪制文字**/
+                var str = 'ABCEFGHJKLMNPQRSTWXY123456789';
+                var code = "";
+                //生成四個驗證碼
+                for (var i = 1; i <= 4; i++) {
+                    var txt = str[randomNum(0, str.length)];
+                    code = code + txt;
+                    ans = code;
+                    ctx.fillStyle = randomColor(50, 160);
+                    //隨機生成字體顏色
+                    ctx.font = randomNum(15, 40) + 'px SimHei';
+                    //隨機生成字體大小
+                    var x = 10 + i * 25;
+                    var y = randomNum(25, 35);
+                    var deg = randomNum(-45, 45);
+                    //修改坐標原點和旋轉角度
+                    ctx.translate(x, y);
+                    ctx.rotate(deg * Math.PI / 180);
+                    ctx.fillText(txt, 0, 0);
+                    //恢復坐標原點和旋轉角度
+                    ctx.rotate(-deg * Math.PI / 180);
+                    ctx.translate(-x, -y);
+                }
+
+                /**繪制幹擾線**/
+                for (var i = 0; i < 3; i++) {
+                    ctx.strokeStyle = randomColor(40, 180);
+                    ctx.beginPath();
+                    ctx.moveTo(randomNum(0, width / 2), randomNum(0, height / 2));
+                    ctx.lineTo(randomNum(0, width / 2), randomNum(0, height));
+                    ctx.stroke();
+                }
+                /**繪制幹擾點**/
+                for (var i = 0; i < 50; i++) {
+                    ctx.fillStyle = randomColor(255);
+                    ctx.beginPath();
+                    ctx.arc(randomNum(0, width), randomNum(0, height), 1, 0, 2 * Math.PI);
+                    ctx.fill();
+                }
+                return code;
+            }
+            setInterval(function () {
+                $("#changeImg").click();
+            }, 120000);
+        });
+
+        $(".login_btn").click(function () {
+            var usc = $("#code").val();
+            // 驗證碼過了才進行其他動作
+            if (usc == "") {
+                alert("請輸入驗證碼。")
+                event.preventDefault();
+            }
+            else if (usc != ans) {
+                alert("驗證碼有誤。")
+                $("#changeImg").click();
+                event.preventDefault();
+            }
+            else if (usc == ans) {
+            }
+        })
+    </script>
+    <script>
+        $("#TOS_Link").click(function () {
+            $("#pills-tab .nav-item:nth-child(2) a").click();
+        });
+        $("#PS_Link").click(function () {
+            $("#pills-tab .nav-item:nth-child(3) a").click();
+        });
+    </script>
+</body>
+
+</html>
